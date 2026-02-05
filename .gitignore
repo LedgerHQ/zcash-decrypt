@@ -1,4 +1,7 @@
+# Rust - WASM
 /target
 /pkg
 Cargo.lock
 
+# nodejs
+/node_modules
