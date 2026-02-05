@@ -13,4 +13,4 @@ jobs:
     runs-on: ${{ vars.UBUNTU_VERSION }}
     steps:
       - name: Publish and release
-      - run: echo "publish and release"
+        run: echo "publish and release"
