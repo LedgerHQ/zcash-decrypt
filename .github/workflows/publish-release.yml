@@ -13,7 +13,7 @@ env:
 jobs:
   version:
     timeout-minutes: 15
-    runs-on: ${{ UBUNTU_VERSION }}
+    runs-on: ${{ vars.UBUNTU_VERSION }}
     steps:
       - name: Checkout code repository
         uses: actions/checkout@v4
