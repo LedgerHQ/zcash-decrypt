@@ -5,27 +5,47 @@ WebAssembly module for decrypting Zcash shielded transactions.
 ### Requirements
 
 ```bash
-# Install Rust
+# install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Install wasm-pack
+# install wasm-pack
 cargo install wasm-pack
 ```
 
-### Build for Node.js
+### Build and Test for Node.js
 
 ```bash
-# Development build
+# development build
 pnpm run build:dev
 
-# Production build (optimized for size)
+# production build (optimized for size)
 pnpm run build
 ```
+
+This will generate files in `pkg/`.
+
+### Building on a Mac?
+
+You might want to try the following if you are having troubles building on Mac.
+
+Update Clang via Homebrew:
+
+```bash
+brew install llvm
+```
+
+Use a newer version from Brew:
+
+```bash
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CC=/opt/homebrew/opt/llvm/bin/clang
+export AR=/opt/homebrew/opt/llvm/bin/llvm-ar
+```
+
 
 ### Test
 
 ```bash
+# test
 pnpm run test
 ```
-
-This will generate files in `pkg/`.
