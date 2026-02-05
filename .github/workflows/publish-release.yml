@@ -1,15 +1,20 @@
-# Based on: https://pnpm.io/continuous-integration#github-actions
+# Based on: https://pnpm.io/using-changesets#add-the-workflow
 
-name: Build and Test
+name: Changesets
+
 on:
   push:
-    branches-ignore:
+    branches:
       - main
+
+env:
+  CI: true
 
 permissions: {}
 
 jobs:
-  build-test:
+  version:
+    timeout-minutes: 15
     runs-on: ${{ vars.UBUNTU_VERSION }}
     steps:
       - name: Checkout code repository
@@ -24,8 +29,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ vars.NODE_VERSION }}
-          cache: "pnpm"
-
+          cache: 'pnpm'
+      
       - name: Install Node.js dependencies
         run: pnpm install
 
@@ -37,3 +42,13 @@ jobs:
 
       - name: Test
         run: pnpm run test
+      
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@v1
+
+      - name: Publish to npm
+        if: steps.changesets.outputs.hasChangesets == 'false'
+        run: pnpm changeset publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_TOKEN }}

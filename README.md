@@ -1,6 +1,8 @@
-# ZCash WASM
+# ZCash Decrypt
 
 WebAssembly module for decrypting Zcash shielded transactions.
+
+## Getting Started
 
 ### Requirements
 
@@ -41,7 +43,6 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export CC=/opt/homebrew/opt/llvm/bin/clang
 export AR=/opt/homebrew/opt/llvm/bin/llvm-ar
 ```
-
 
 ### Test
 

@@ -12,7 +12,8 @@
   "main": "./pkg/zcash_decrypt.js",
   "types": "./types/zcash_decrypt.d.ts",
   "devDependencies": {
-    "@changesets/cli": "^2.29.8"
+    "@changesets/cli": "^2.29.8",
+    "changeset": "^0.2.6"
   },
   "scripts": {
     "build:dev": "wasm-pack build --target nodejs --dev",
