@@ -6,13 +6,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ vars.UBUNTU_VERSION }}
+ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: ${{ vars.PNPM_VERSION }}
       - name: Use Node.js ${{ vars.NODE_VERSION}}
         uses: actions/setup-node@v4
         with:
