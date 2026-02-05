@@ -10,10 +10,6 @@ on:
 env:
   CI: true
 
-permissions:
-  contents: read
-  id-token: write
-
 jobs:
   version:
     timeout-minutes: 15
