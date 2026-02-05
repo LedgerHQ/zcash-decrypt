@@ -17,7 +17,6 @@
   "scripts": {
     "build:dev": "wasm-pack build --target nodejs --dev",
     "build": "./scripts/build.sh",
-    "ci:publish": "pnpm publish",
     "test": "wasm-pack test --node --lib"
   }
 }
