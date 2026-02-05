@@ -19,8 +19,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
-      - name: Install dependencies
+      - name: Install Node.js dependencies
         run: pnpm install
+      - name: Install WASM-Pack
+        run: cargo install wasm-pack
       - name: Build
         run: pnpm run build
       - name: Test
