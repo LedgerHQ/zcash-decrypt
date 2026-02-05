@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ vars.UBUNTU_VERSION }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install pnpm
+      - name: Use pnpm ${{ vars.PNPM_VERSION }}
         uses: pnpm/action-setup@v4
         with:
           version: ${{ vars.PNPM_VERSION }}
