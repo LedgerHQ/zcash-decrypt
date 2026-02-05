@@ -1,3 +1,5 @@
+# Base on: https://pnpm.io/continuous-integration#github-actions
+
 name: Build and Test
 on:
   push:
@@ -5,19 +7,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        node-version: [20]
     steps:
       - uses: actions/checkout@v4
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{ vars.NODE_VERSION}}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ vars.NODE_VERSION }}
           cache: "pnpm"
       - name: Install Node.js dependencies
         run: pnpm install
