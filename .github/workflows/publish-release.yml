@@ -10,7 +10,7 @@ on:
 env:
   CI: true
 
-permissions:
+permissions: {}
 
 jobs:
   version:
