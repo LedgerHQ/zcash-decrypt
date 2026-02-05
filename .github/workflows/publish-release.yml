@@ -10,7 +10,9 @@ on:
 env:
   CI: true
 
-permissions: {}
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
   version:
