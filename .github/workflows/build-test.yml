@@ -29,10 +29,6 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm install
 
-      - name: Changeset status
-        run: |
-          pnpm changeset status
-
       - name: Install WASM-Pack
         run: cargo install wasm-pack
 
