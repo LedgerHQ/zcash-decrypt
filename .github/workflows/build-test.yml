@@ -31,7 +31,6 @@ jobs:
 
       - name: Changeset status
         run: |
-          git fetch origin main
           pnpm changeset status
 
       - name: Install WASM-Pack
