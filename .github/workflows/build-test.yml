@@ -4,6 +4,8 @@ name: Build and Test
 on:
   push:
 
+permissions:
+
 jobs:
   build:
     runs-on: ${{ vars.UBUNTU_VERSION }}
