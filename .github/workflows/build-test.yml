@@ -20,9 +20,6 @@ jobs:
         with:
           version: ${{ vars.PNPM_VERSION }}
 
-      - name: Changeset status
-        run: pnpm changeset status --since=main
-
       - name: Use Node.js ${{ vars.NODE_VERSION}}
         uses: actions/setup-node@v4
         with:
@@ -40,3 +37,6 @@ jobs:
 
       - name: Test
         run: pnpm run test
+
+      - name: Changeset status
+        run: pnpm changeset status --since=main
