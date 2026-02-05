@@ -11,6 +11,6 @@
 # Enable debug mode
 # set -x
 
-wasm-pack build --target nodejs --release
+wasm-pack build --target nodejs --release --verbose
 cp ./types/zcash_decrypt.d.ts pkg
 rm ./pkg/package.json
