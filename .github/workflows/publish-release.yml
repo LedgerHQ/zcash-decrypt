@@ -1,16 +1,52 @@
+# Based on: https://pnpm.io/using-changesets#add-the-workflow
+
 name: Publish and release
+
 on:
   push:
-  release:
-    types: [published]
+    branches:
+      - main
 
-permissions: {}
+env:
+  CI: true
 
 jobs:
-  build-test:
-    uses: ./.github/workflows/build-test.yml
-  publish-release:
-    runs-on: ${{ vars.UBUNTU_VERSION }}
+  version:
+    timeout-minutes: 15
+    runs-on: ${{ UBUNTU_VERSION }}
     steps:
-      - name: Publish and release
-        run: echo "publish and release"
+      - name: Checkout code repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ vars.PNPM_VERSION }}
+
+      - name: Setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+          cache: 'pnpm'
+      
+      - name: Install Node.js dependencies
+        run: pnpm install
+
+      - name: Install WASM-Pack
+        run: cargo install wasm-pack
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test
+      
+      - name: Create and publish versions
+        uses: changesets/action@v1
+        with:
+          commit: "chore: update versions"
+          title: "chore: update versions"
+          publish: pnpm ci:publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
