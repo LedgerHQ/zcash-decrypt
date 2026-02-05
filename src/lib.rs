@@ -64,7 +64,6 @@ impl DecryptedOutput {
     }
 }
 
-
 #[wasm_bindgen]
 pub fn decrypt_tx(tx_hex: &str, viewing_key: &str) -> Result<JsValue, Error> {
     // Step 1: parse UFVK
