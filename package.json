@@ -1,0 +1,22 @@
+{
+  "name": "zcash-decrypt",
+  "collaborators": [
+    "Alessandro Vito <alessandro.vito-ext@ledger.fr>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "./pkg/zcash_decrypt_bg.wasm",
+    "./pkg/zcash_decrypt.js",
+    "./types/zcash_decrypt.d.ts"
+  ],
+  "main": "./pkg/zcash_decrypt.js",
+  "types": "./types/zcash_decrypt.d.ts",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.8"
+  },
+  "scripts": {
+    "build:dev": "wasm-pack build --target nodejs --dev",
+    "build": "./scripts/build.sh",
+    "test": "wasm-pack test --node --lib"
+  }
+}

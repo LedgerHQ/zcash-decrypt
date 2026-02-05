@@ -1,0 +1,30 @@
+# Base on: https://pnpm.io/continuous-integration#github-actions
+
+name: Build and Test
+on:
+  push:
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ${{ vars.UBUNTU_VERSION }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use pnpm ${{ vars.PNPM_VERSION }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ vars.PNPM_VERSION }}
+      - name: Use Node.js ${{ vars.NODE_VERSION}}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ vars.NODE_VERSION }}
+          cache: "pnpm"
+      - name: Install Node.js dependencies
+        run: pnpm install
+      - name: Install WASM-Pack
+        run: cargo install wasm-pack
+      - name: Build
+        run: pnpm run build
+      - name: Test
+        run: pnpm run test

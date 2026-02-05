@@ -1,0 +1,6 @@
+# Rust - WASM
+/target
+/pkg
+
+# nodejs
+/node_modules
