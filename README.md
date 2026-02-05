@@ -1,4 +1,4 @@
-# ZCash WASM
+# ZCash Decrypt
 
 WebAssembly module for decrypting Zcash shielded transactions.
 

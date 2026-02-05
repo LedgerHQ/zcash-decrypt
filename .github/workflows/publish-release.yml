@@ -1,0 +1,16 @@
+name: Publish and release
+on:
+  push:
+  release:
+    types: [published]
+
+permissions: {}
+
+jobs:
+  build-test:
+    uses: ./.github/workflows/build-test.yml
+  publish-release:
+    runs-on: ${{ UBUNTU_VERSION }}
+    steps:
+      - name: Publish and release
+      - run: echo "publish and release"

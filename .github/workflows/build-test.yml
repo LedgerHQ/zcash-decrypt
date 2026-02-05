@@ -1,13 +1,12 @@
 # Base on: https://pnpm.io/continuous-integration#github-actions
 
 name: Build and Test
-on:
-  push:
+on: [push, workflow_call]
 
 permissions: {}
 
 jobs:
-  build:
+  build-test:
     runs-on: ${{ vars.UBUNTU_VERSION }}
     steps:
       - uses: actions/checkout@v4
