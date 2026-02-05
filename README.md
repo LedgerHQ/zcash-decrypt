@@ -2,9 +2,7 @@
 
 WebAssembly module for decrypting Zcash shielded transactions.
 
-## 🚀 Building
-
-### Install Rust and Wasm-Pack
+### Requirements
 
 ```bash
 # Install Rust
@@ -18,12 +16,16 @@ cargo install wasm-pack
 
 ```bash
 # Development build
-wasm-pack build --target nodejs --dev
-cp types/zcash_decrypt.d.ts pkg
+pnpm run build:dev
 
 # Production build (optimized for size)
-wasm-pack build --target nodejs --release
-cp types/zcash_decrypt.d.ts pkg
+pnpm run build
+```
+
+### Test
+
+```bash
+pnpm run test
 ```
 
 This will generate files in `pkg/`.
