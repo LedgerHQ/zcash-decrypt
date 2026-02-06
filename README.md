@@ -4,6 +4,25 @@ WebAssembly module for decrypting Zcash shielded transactions.
 
 ## Getting Started
 
+### Installation
+```bash
+# npm
+npm install -s @ledger/zcash-decrypt
+
+# pnpm
+pnpm add @ledger/zcash-decrypt
+```
+
+### Usage
+
+```typescript
+import { decrypt_tx } from "@ledgerhq/zcash-decrypt";
+
+const decrypted = decrypt_tx(rawHexTransaction, viewingKey);
+```
+
+## Developing
+
 ### Requirements
 
 ```bash
