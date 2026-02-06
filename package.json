@@ -3,6 +3,12 @@
   "collaborators": [
     "Alessandro Vito <alessandro.vito-ext@ledger.fr>"
   ],
+  "keywords": [
+    "Ledger",
+    "zec",
+    "zatoshi",
+    "ZCash"
+  ],
   "version": "0.1.0",
   "license": "MIT AND Apache-2.0",
   "repository": {
