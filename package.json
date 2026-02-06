@@ -1,9 +1,17 @@
 {
-  "name": "zcash-decrypt",
+  "name": "@ledger-hq/zcash-decrypt",
   "collaborators": [
     "Alessandro Vito <alessandro.vito-ext@ledger.fr>"
   ],
   "version": "0.1.0",
+  "license": "MIT AND Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LedgerHQ/zcash-decrypt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LedgerHQ/zcash-decrypt/issues"
+  },
   "files": [
     "./pkg/zcash_decrypt_bg.wasm",
     "./pkg/zcash_decrypt.js",
@@ -19,5 +27,6 @@
     "build:dev": "wasm-pack build --target nodejs --dev",
     "build": "./scripts/build.sh",
     "test": "wasm-pack test --node --lib"
-  }
+  },
+  "packageManager": "pnpm@10.24.0"
 }
