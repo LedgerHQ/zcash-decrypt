@@ -21,6 +21,8 @@ pub struct DecryptedOutput {
     pub memo: String,
     pub amount: f64, // Amount in ZEC
     pub transfer_type: String,
+    pub from: String,
+    pub to: String,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -61,6 +63,25 @@ impl DecryptedOutput {
 
     fn decode_note_value(zatoshis: Zatoshis) -> f64 {
         zatoshis.into_u64() as f64 / 100_000_000.0
+    }
+
+    fn decode_address(address: &str) -> String {
+        let address_bytes = address.as_bytes();
+        let address_len = address_bytes.iter().position(|&b| b == 0).unwrap_or(address_bytes.len());
+
+        if address_len == 0 {
+            return String::from("");
+        }
+        
+        String::from_utf8(address_bytes[..address_len].to_vec()).unwrap_or_default()
+    }
+
+    fn decode_from(from: &str) -> String {
+        DecryptedOutput::decode_address(from)
+    }
+
+    fn decode_to(to: &str) -> String {
+        DecryptedOutput::decode_address(to)
     }
 }
 
