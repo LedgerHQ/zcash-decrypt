@@ -19,7 +19,7 @@ use serde::{Serialize, Deserialize};
 #[derive(PartialEq, Debug)]
 pub struct DecryptedOutput {
     pub memo: String,
-    pub amount: f64, // Amount in ZEC
+    pub amount: u64, // Amount in ZEC
     pub transfer_type: String,
 }
 
@@ -59,8 +59,8 @@ impl DecryptedOutput {
         }
     }
 
-    fn decode_note_value(zatoshis: Zatoshis) -> f64 {
-        zatoshis.into_u64() as f64 / 100_000_000.0
+    fn decode_note_value(zatoshis: Zatoshis) -> u64 {
+        zatoshis.into_u64()
     }
 }
 
@@ -150,12 +150,12 @@ mod tests {
         let mut expected: Vec<DecryptedOutput> = Vec::new();
         expected.push(DecryptedOutput {
             memo: String::from(""),
-            amount: 0.1449,
+            amount: 14490000,
             transfer_type: String::from("internal"),
         });
         expected.push(DecryptedOutput {
             memo: String::from(""),
-            amount: 0.1449,
+            amount: 14490000,
             transfer_type: String::from("internal"),
         });
         
